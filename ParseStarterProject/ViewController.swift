@@ -15,20 +15,130 @@ class ViewController: UIViewController {
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
 
+    @IBOutlet weak var driverLabel: UILabel!
+    @IBOutlet weak var driverSwitch: UISwitch!
+
+    @IBOutlet weak var leftButton: UIButton!
+    @IBOutlet weak var rightButton: UIButton!
+
+
+    var signupMode = true
+    var indicator  = UIActivityIndicatorView()
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
 
-        let testObject = PFObject(className: "TestObject")
-        testObject["foo"] = "bar"
-        testObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
-            if success {
-                print("Object has been saved.")
+
+    @IBAction func leftPressed(sender: AnyObject) {
+        if username.text != "" && password.text != "" {
+            showActivityIndicator()
+
+            var errorMessage = "Please try again later"
+
+            if signupMode {
+                let user = PFUser()
+
+                user.username = username.text
+                user.password = password.text
+                user.setValue(driverSwitch.on, forKey: "driver")
+
+                user.signUpInBackgroundWithBlock({
+                    (success, error) -> Void in
+
+                    self.endActivity()
+
+                    if success {
+                        print("Successfully signed up")
+                    }
+                    else {
+                        if let errorString = error!.userInfo["error"] as? String {
+                            errorMessage = errorString
+                        }
+
+                        self.showAlert("Error signing up", message: errorMessage)
+                    }
+                })
             }
             else {
-                print("ERROR: \(error?.localizedDescription)")
+                PFUser.logInWithUsernameInBackground(username.text!, password: password.text!, block: {
+                    (user, error) -> Void in
+
+                    self.endActivity()
+
+                    if user != nil {
+                        print("Successfully logged in")
+                    }
+                    else {
+                        if let errorString = error!.userInfo["error"] as? String {
+                            errorMessage = errorString
+                        }
+
+                        self.showAlert("Error logging in", message: errorMessage)
+
+                    }
+                })
             }
+
+        }
+        else {
+           showAlert("Error in Form", message: "You must enter both a username and password.")
         }
     }
+
+
+    @IBAction func rightPressed(sender: AnyObject) {
+        if signupMode {     // Swap to log in
+            leftButton.setTitle("Log In", forState: .Normal)
+            rightButton.setTitle("New User?", forState: .Normal)
+            driverLabel.textColor = UIColor.grayColor()
+            driverSwitch.enabled = false
+
+            signupMode = false
+        }
+        else {
+            leftButton.setTitle("Sign Up", forState: .Normal)
+            rightButton.setTitle("Existing User?", forState: .Normal)
+            driverLabel.textColor = UIColor.blackColor()
+            driverSwitch.enabled = true
+
+            signupMode = true
+        }
+    }
+
+    func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+
+        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: {
+            (action) -> Void in
+
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }))
+
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+
+    func showActivityIndicator() {
+        indicator = UIActivityIndicatorView(frame: CGRectMake(0, 0, 50, 50))
+
+        indicator.center = self.view.center
+        indicator.hidesWhenStopped = true
+        indicator.activityIndicatorViewStyle = .Gray
+
+        self.view.addSubview(indicator)
+
+        indicator.startAnimating()
+
+        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+    }
+
+    func endActivity() {
+        self.indicator.stopAnimating()
+        UIApplication.sharedApplication().endIgnoringInteractionEvents()
+    }
+
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
