@@ -58,6 +58,10 @@
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="password" destination="4eY-l3-a22" id="VnT-3W-77r"/>
+                        <outlet property="username" destination="OkD-EE-Juc" id="lD5-l9-Ejo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
