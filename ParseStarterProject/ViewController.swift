@@ -46,7 +46,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
                 user.username = username.text
                 user.password = password.text
-                user.setValue(driverSwitch.on, forKey: "driver")
+                user["driver"] = driverSwitch.on
 
                 user.signUpInBackgroundWithBlock({
                     (success, error) -> Void in
@@ -95,18 +95,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if signupMode {     // Swap to log in
             leftButton.setTitle("Log In", forState: .Normal)
             rightButton.setTitle("New User?", forState: .Normal)
-            riderLabel.textColor = UIColor.grayColor()
-            driverLabel.textColor = UIColor.grayColor()
-            driverSwitch.enabled = false
+
+            riderLabel.hidden = true
+            driverLabel.hidden = true
+            driverSwitch.hidden = true
 
             signupMode = false
         }
         else {
             leftButton.setTitle("Sign Up", forState: .Normal)
             rightButton.setTitle("Existing User?", forState: .Normal)
-            riderLabel.textColor = UIColor.blackColor()
-            driverLabel.textColor = UIColor.blackColor()
-            driverSwitch.enabled = true
+
+            riderLabel.hidden = false
+            driverLabel.hidden = false
+            driverSwitch.hidden = false
 
             signupMode = true
         }
@@ -142,6 +144,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.indicator.stopAnimating()
         UIApplication.sharedApplication().endIgnoringInteractionEvents()
     }
+
+    // The following two functions take care of clicking outrside of and pressing return on
+    // the keyboard to dismiss it.
 
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)  // Close the keyboard
