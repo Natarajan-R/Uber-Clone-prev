@@ -125,6 +125,7 @@
                         <outlet property="riderLabel" destination="XsU-vT-bN6" id="6hz-WT-44D"/>
                         <outlet property="rightButton" destination="elC-ag-Sog" id="tAl-aR-PdS"/>
                         <outlet property="username" destination="OkD-EE-Juc" id="lD5-l9-Ejo"/>
+                        <segue destination="Iv9-Rb-Fky" kind="show" identifier="loginRider" id="3Q9-i2-rJL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -164,5 +165,49 @@
             </objects>
             <point key="canvasLocation" x="609" y="324"/>
         </scene>
+        <!--Rider View Controller-->
+        <scene sceneID="buQ-QH-L69">
+            <objects>
+                <viewController title="Rider View Controller" id="Iv9-Rb-Fky" customClass="RiderViewController" customModule="UberAlles" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="taE-wq-pqa"/>
+                        <viewControllerLayoutGuide type="bottom" id="sG3-am-EhI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kho-LS-oFp">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9GV-0d-fnm">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="s8X-b8-Ij4"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Rider" id="VmJ-We-eU3">
+                                        <barButtonItem key="leftBarButtonItem" title="Logout" id="wYb-d0-goo">
+                                            <connections>
+                                                <segue destination="BYZ-38-t0r" kind="show" identifier="logoutRider" id="Rm0-BB-PXf"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="9GV-0d-fnm" secondAttribute="trailing" constant="-20" id="Imy-IP-WUN"/>
+                            <constraint firstItem="9GV-0d-fnm" firstAttribute="leading" secondItem="kho-LS-oFp" secondAttribute="leadingMargin" constant="-20" id="Wc8-No-nUR"/>
+                            <constraint firstItem="9GV-0d-fnm" firstAttribute="top" secondItem="taE-wq-pqa" secondAttribute="bottom" id="pON-wu-B0X"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I2M-Nr-xtK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="954" y="405"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="ZMZ-bd-NzF"/>
+    </inferredMetricsTieBreakers>
 </document>
