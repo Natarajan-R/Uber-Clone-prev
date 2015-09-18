@@ -55,6 +55,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
                     if success {
                         print("Successfully signed up")
+                        self.performSegueWithIdentifier("loginRider", sender: self)
                     }
                     else {
                         if let errorString = error!.userInfo["error"] as? String {
@@ -73,6 +74,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
                     if user != nil {
                         print("Successfully logged in")
+                        self.performSegueWithIdentifier("loginRider", sender: self)
                     }
                     else {
                         if let errorString = error!.userInfo["error"] as? String {
@@ -145,7 +147,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         UIApplication.sharedApplication().endIgnoringInteractionEvents()
     }
 
-    // The following two functions take care of clicking outrside of and pressing return on
+    // The following two functions take care of clicking outside of and pressing return on
     // the keyboard to dismiss it.
 
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -158,7 +160,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
         return true
     }
 
-
+    override func viewDidAppear(animated: Bool) {
+        if PFUser.currentUser()?.objectId != nil {
+            self.performSegueWithIdentifier("loginRider", sender: self)
+        }
+    }
 
 
 
