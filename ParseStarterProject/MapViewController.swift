@@ -10,21 +10,21 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+class RiderViewController: UIViewController {
 
     var locationManager = CLLocationManager()
 
-    @IBOutlet weak var mapView: MKMapView!
-
     override func viewDidLoad() {
+        print("Rider View Controller")
+        
         super.viewDidLoad()
 
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+//        locationManager.delegate = self
+//        locationManager.desiredAccuracy = kCLLocationAccuracyBest
 
-        locationManager.requestWhenInUseAuthorization()
+//        locationManager.requestWhenInUseAuthorization()
 
-        locationManager.startUpdatingLocation()
+//        locationManager.startUpdatingLocation()
     }
 
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -45,8 +45,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 
         let region: MKCoordinateRegion = MKCoordinateRegionMake(centre, span)
 
-        mapView.setRegion(region, animated: true)
+//        mapView.setRegion(region, animated: true)
     }
+
 
 
 
@@ -54,16 +55,4 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
