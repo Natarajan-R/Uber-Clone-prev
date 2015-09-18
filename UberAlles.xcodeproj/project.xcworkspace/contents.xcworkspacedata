@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../Launch Screen.storyboard">
+   </FileRef>
+   <FileRef
       location = "self:/Users/julian/Documents/apps/IOS9/TestLatestParse/UberAlles.xcodeproj">
    </FileRef>
 </Workspace>

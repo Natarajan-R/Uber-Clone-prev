@@ -160,6 +160,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         return true
     }
 
+    // Segue to Rider controller if logged in at entry
+
     override func viewDidAppear(animated: Bool) {
         if PFUser.currentUser()?.objectId != nil {
             self.performSegueWithIdentifier("loginRider", sender: self)
