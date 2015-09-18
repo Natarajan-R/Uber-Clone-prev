@@ -10,11 +10,12 @@
 import UIKit
 import Parse
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
 
+    @IBOutlet weak var riderLabel: UILabel!
     @IBOutlet weak var driverLabel: UILabel!
     @IBOutlet weak var driverSwitch: UISwitch!
 
@@ -28,6 +29,9 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.username.delegate = self
+        self.password.delegate = self
     }
 
 
@@ -76,7 +80,6 @@ class ViewController: UIViewController {
                         }
 
                         self.showAlert("Error logging in", message: errorMessage)
-
                     }
                 })
             }
@@ -92,6 +95,7 @@ class ViewController: UIViewController {
         if signupMode {     // Swap to log in
             leftButton.setTitle("Log In", forState: .Normal)
             rightButton.setTitle("New User?", forState: .Normal)
+            riderLabel.textColor = UIColor.grayColor()
             driverLabel.textColor = UIColor.grayColor()
             driverSwitch.enabled = false
 
@@ -100,6 +104,7 @@ class ViewController: UIViewController {
         else {
             leftButton.setTitle("Sign Up", forState: .Normal)
             rightButton.setTitle("Existing User?", forState: .Normal)
+            riderLabel.textColor = UIColor.blackColor()
             driverLabel.textColor = UIColor.blackColor()
             driverSwitch.enabled = true
 
@@ -137,6 +142,18 @@ class ViewController: UIViewController {
         self.indicator.stopAnimating()
         UIApplication.sharedApplication().endIgnoringInteractionEvents()
     }
+
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)  // Close the keyboard
+    }
+
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+
+        return true
+    }
+
+
 
 
 
