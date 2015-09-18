@@ -54,7 +54,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
                     self.endActivity()
 
                     if success {
-                        print("Successfully signed up")
+                        print("Signed up successfully")
+                        self.performSegueWithIdentifier("showMap", sender: self)
                     }
                     else {
                         if let errorString = error!.userInfo["error"] as? String {
@@ -73,6 +74,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
                     if user != nil {
                         print("Successfully logged in")
+                        self.performSegueWithIdentifier("showMap", sender: self)
                     }
                     else {
                         if let errorString = error!.userInfo["error"] as? String {
