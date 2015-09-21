@@ -18,6 +18,7 @@
 		81BA817B1A49E0E500E65899 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817A1A49E0E500E65899 /* SystemConfiguration.framework */; };
 		81BA817F1A49E0F000E65899 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */; };
 		B92352601BAC6FCC000AA4F8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B923525F1BAC6FCC000AA4F8 /* MapKit.framework */; };
+		B940EA251BB008370040C89D /* DriverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B940EA241BB008370040C89D /* DriverViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		B9CAB4911BAC494300DE13E4 /* RiderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CAB4901BAC494300DE13E4 /* RiderViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		B9CAB4931BAC4D2500DE13E4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9CAB4921BAC4D2500DE13E4 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
@@ -39,6 +40,7 @@
 		81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		81BA81801A49E10C00E65899 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		B923525F1BAC6FCC000AA4F8 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		B940EA241BB008370040C89D /* DriverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriverViewController.swift; sourceTree = "<group>"; };
 		B9CAB4901BAC494300DE13E4 /* RiderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RiderViewController.swift; sourceTree = "<group>"; };
 		B9CAB4921BAC4D2500DE13E4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -95,6 +97,7 @@
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
 				81BA814C1A49DA1800E65899 /* ViewController.swift */,
 				814C3AC61B69877600E307BB /* Main.storyboard */,
+				B940EA241BB008370040C89D /* DriverViewController.swift */,
 				B9CAB4901BAC494300DE13E4 /* RiderViewController.swift */,
 			);
 			name = UserAlles;
@@ -221,6 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B940EA251BB008370040C89D /* DriverViewController.swift in Sources */,
 				81BA814D1A49DA1800E65899 /* ViewController.swift in Sources */,
 				B9CAB4911BAC494300DE13E4 /* RiderViewController.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,

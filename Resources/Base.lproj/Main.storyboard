@@ -200,10 +200,10 @@
             </objects>
             <point key="canvasLocation" x="612" y="324"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Driver View Controller-->
         <scene sceneID="EEN-YK-vuD">
             <objects>
-                <tableViewController id="uwh-ka-yVJ" sceneMemberID="viewController">
+                <tableViewController title="Driver View Controller" id="uwh-ka-yVJ" customClass="DriverViewController" customModule="UberAlles" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="eDP-tB-0jh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -223,7 +223,13 @@
                             <outlet property="delegate" destination="uwh-ka-yVJ" id="VOY-HI-aTt"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="bOi-bP-eTr"/>
+                    <navigationItem key="navigationItem" title="Requests" id="475-jO-iZ4">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="9JB-or-iFS">
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="show" identifier="logoutDriver" id="9H0-4R-qR2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7RO-xt-MzG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -248,4 +254,7 @@
             <point key="canvasLocation" x="265" y="1044"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="9H0-4R-qR2"/>
+    </inferredMetricsTieBreakers>
 </document>
