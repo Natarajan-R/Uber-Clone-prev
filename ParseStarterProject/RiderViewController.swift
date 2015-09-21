@@ -76,11 +76,6 @@ class RiderViewController: UIViewController, MKMapViewDelegate, CLLocationManage
     }
 
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "logoutRider" {
             PFUser.logOut()
@@ -130,10 +125,19 @@ class RiderViewController: UIViewController, MKMapViewDelegate, CLLocationManage
 
                         self.dismissViewControllerAnimated(true, completion: nil)
                     }))
-                    
+
                     self.presentViewController(alert, animated: true, completion: nil)
                 }
             }
         }
+    }
+
+
+
+
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 }

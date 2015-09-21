@@ -54,7 +54,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                     self.endActivity()
 
                     if success {
-                        print("Successfully signed up")
+//                        print("Successfully signed up")
                         if user["driver"] as! Bool {
                             self.performSegueWithIdentifier("loginDriver", sender: self)
                         }
@@ -78,7 +78,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                     self.endActivity()
 
                     if let user = user {
-                        print("Successfully logged in")
+//                        print("Successfully logged in")
 
                         if user["driver"] as! Bool {
                             self.performSegueWithIdentifier("loginDriver", sender: self)
