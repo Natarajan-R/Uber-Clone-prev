@@ -55,7 +55,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
                     if success {
                         print("Successfully signed up")
-                        self.performSegueWithIdentifier("loginRider", sender: self)
+                        if user["driver"] as! Bool {
+                            self.performSegueWithIdentifier("loginDriver", sender: self)
+                        }
+                        else {
+                            self.performSegueWithIdentifier("loginRider", sender: self)
+                        }
                     }
                     else {
                         if let errorString = error!.userInfo["error"] as? String {
@@ -72,9 +77,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
                     self.endActivity()
 
-                    if user != nil {
+                    if let user = user {
                         print("Successfully logged in")
-                        self.performSegueWithIdentifier("loginRider", sender: self)
+
+                        if user["driver"] as! Bool {
+                            self.performSegueWithIdentifier("loginDriver", sender: self)
+                        }
+                        else {
+                            self.performSegueWithIdentifier("loginRider", sender: self)
+                        }
                     }
                     else {
                         if let errorString = error!.userInfo["error"] as? String {
@@ -164,7 +175,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidAppear(animated: Bool) {
         if PFUser.currentUser()?.objectId != nil {
-            self.performSegueWithIdentifier("loginRider", sender: self)
+            if PFUser.currentUser()!["driver"] as! Bool {
+                self.performSegueWithIdentifier("loginDriver", sender: self)
+            }
+            else {
+                self.performSegueWithIdentifier("loginRider", sender: self)
+            }
         }
     }
 

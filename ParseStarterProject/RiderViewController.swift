@@ -27,7 +27,7 @@ class RiderViewController: UIViewController, MKMapViewDelegate, CLLocationManage
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        print("Setting up locationManager")
+//        print("Setting up locationManager")
 
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -35,12 +35,12 @@ class RiderViewController: UIViewController, MKMapViewDelegate, CLLocationManage
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
 
-        print("Called startUpdating")
+//        print("Called startUpdating")
     }
 
 
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("Updated")
+//        print("Updated")
         
         let location = locations[0].coordinate
 
