@@ -27,7 +27,7 @@ class RiderViewController: UIViewController, MKMapViewDelegate, CLLocationManage
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        print("Setting up map")
+        print("Setting up locationManager")
 
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -49,7 +49,7 @@ class RiderViewController: UIViewController, MKMapViewDelegate, CLLocationManage
 
         self.setMapCentre(userLat, long: userLong)
 
-        self.locationManager.stopUpdatingLocation()
+//        self.locationManager.stopUpdatingLocation()
     }
 
     func setMapCentre(lat: Double, long: Double) -> Void {
