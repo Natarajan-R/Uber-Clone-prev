@@ -61,12 +61,20 @@ class DriverViewController: UITableViewController, CLLocationManagerDelegate {
             PFUser.logOut()
             navigationController?.setNavigationBarHidden(navigationController?.navigationBarHidden == false, animated: false)
         }
+        else if segue.identifier == "showViewRequest" {
+            if let destination = segue.destinationViewController as? RequestViewController {
+                let row = tableView.indexPathForSelectedRow!.row
+                
+                destination.requestLocation = locations[row]
+                destination.requestUsername = usernames[row]
+            }
+        }
     }
 
     func loadNearRequests() {
         let query = PFQuery(className: "RiderRequest")
 
-        query.whereKey("location", nearGeoPoint: PFGeoPoint(latitude: userLat, longitude: userLong))
+        query.whereKey("location", nearGeoPoint: PFGeoPoint(latitude: userLat, longitude: userLong), withinKilometers: 50.0)
         query.limit = 10
 
         query.findObjectsInBackgroundWithBlock({
@@ -78,19 +86,21 @@ class DriverViewController: UITableViewController, CLLocationManagerDelegate {
                 self.distances.removeAll()
 
                 for object in objects! {
-                    if let username = object["username"] as? String {
-                        self.usernames.append(username)
-                    }
+                    if object["driverResponded"] == nil {
+                        if let username = object["username"] as? String {
+                            self.usernames.append(username)
+                        }
 
-                    if let location = object["location"] as? PFGeoPoint {
-                        let reqLocation = CLLocationCoordinate2DMake(location.latitude, location.longitude)
+                        if let location = object["location"] as? PFGeoPoint {
+                            let reqLocation = CLLocationCoordinate2DMake(location.latitude, location.longitude)
 
-                        self.locations.append(reqLocation)
+                            self.locations.append(reqLocation)
 
-                        let requestCLL  = CLLocation(latitude: reqLocation.latitude, longitude: reqLocation.longitude)
-                        let driverCLL   = CLLocation(latitude: self.userLat, longitude: self.userLong)
+                            let requestCLL  = CLLocation(latitude: reqLocation.latitude, longitude: reqLocation.longitude)
+                            let driverCLL   = CLLocation(latitude: self.userLat, longitude: self.userLong)
 
-                        self.distances.append(driverCLL.distanceFromLocation(requestCLL))
+                            self.distances.append(driverCLL.distanceFromLocation(requestCLL))
+                        }
                     }
                 }
 

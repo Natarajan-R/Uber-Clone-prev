@@ -216,6 +216,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="uEY-lW-1K5" kind="show" identifier="showViewRequest" id="QQS-V6-5jd"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -235,6 +238,54 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7RO-xt-MzG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="709" y="1044"/>
+        </scene>
+        <!--View Request-->
+        <scene sceneID="Nev-db-Tko">
+            <objects>
+                <viewController title="View Request" id="uEY-lW-1K5" customClass="RequestViewController" customModule="UberAlles" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ovS-mm-Mil"/>
+                        <viewControllerLayoutGuide type="bottom" id="6Zu-gM-XZt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vcT-PN-T4M">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="03s-7M-eyv">
+                                <rect key="frame" x="20" y="64" width="280" height="242"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="242" id="DYc-Sl-SZ2"/>
+                                </constraints>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Ru-82-gF8">
+                                <rect key="frame" x="115" y="346" width="91" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="91" id="Nez-bV-E0h"/>
+                                    <constraint firstAttribute="height" constant="30" id="fwU-Ol-ql9"/>
+                                </constraints>
+                                <state key="normal" title="Pick up Rider"/>
+                                <connections>
+                                    <action selector="pickupPressed:" destination="uEY-lW-1K5" eventType="touchUpInside" id="VPo-3h-agl"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7Ru-82-gF8" firstAttribute="centerX" secondItem="vcT-PN-T4M" secondAttribute="centerX" id="Dph-s5-l3v"/>
+                            <constraint firstItem="03s-7M-eyv" firstAttribute="trailing" secondItem="vcT-PN-T4M" secondAttribute="trailingMargin" id="c5f-gf-v1M"/>
+                            <constraint firstItem="03s-7M-eyv" firstAttribute="leading" secondItem="vcT-PN-T4M" secondAttribute="leadingMargin" id="lDW-BU-Mpb"/>
+                            <constraint firstItem="7Ru-82-gF8" firstAttribute="top" secondItem="03s-7M-eyv" secondAttribute="bottom" constant="40" id="wae-ot-3fT"/>
+                            <constraint firstItem="03s-7M-eyv" firstAttribute="top" secondItem="ovS-mm-Mil" secondAttribute="bottom" id="xEX-4A-auv"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="map" destination="03s-7M-eyv" id="tRF-W1-e6i"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qme-48-ruV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1159" y="1044"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="MRM-PM-UoF">
