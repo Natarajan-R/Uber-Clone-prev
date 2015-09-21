@@ -111,16 +111,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         PFPush.subscribeToChannelInBackground("") { (succeeded: Bool, error: NSError?) in
             if succeeded {
-                print("ParseStarterProject successfully subscribed to push notifications on the broadcast channel.\n");
+                print("UberAlles successfully subscribed to push notifications on the broadcast channel.\n");
             } else {
-                print("ParseStarterProject failed to subscribe to push notifications on the broadcast channel with error = %@.\n", error)
+                print("UberAlles failed to subscribe to push notifications on the broadcast channel with error = %@.\n", error)
             }
         }
     }
 
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
         if error.code == 3010 {
-            print("Push notifications are not supported in the iOS Simulator.\n")
+//            print("Push notifications are not supported in the iOS Simulator.\n")
         } else {
             print("application:didFailToRegisterForRemoteNotificationsWithError: %@\n", error)
         }
