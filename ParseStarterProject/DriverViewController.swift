@@ -50,10 +50,7 @@ class DriverViewController: UITableViewController, CLLocationManagerDelegate {
         userLong    = location.longitude
 
         loadNearRequests()
-
-//        self.setMapCentre(userLat, long: userLong)
-
-//        self.locationManager.stopUpdatingLocation()
+        updateMyLocationInParse()
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -110,9 +107,51 @@ class DriverViewController: UITableViewController, CLLocationManagerDelegate {
                 print(error!.localizedDescription)
             }
         })
-        
     }
-    
+
+    func updateMyLocationInParse() {
+        var query = PFQuery(className: "DriverLocation")
+
+        query.whereKey("username", equalTo: (PFUser.currentUser()?.username)!)
+
+        query.findObjectsInBackgroundWithBlock {
+            (objects, error) -> Void in
+
+            if error != nil {
+                print(error?.localizedDescription)
+            }
+            else {
+                if objects?.count == 0 {
+                    // New record
+                    print("New Location Record")
+
+                    let driverLoc = PFObject(className: "DriverLocation")
+                    driverLoc["username"] = PFUser.currentUser()?.username
+                    driverLoc["location"] = PFGeoPoint(latitude: self.userLat, longitude: self.userLong)
+                    driverLoc.saveInBackground()
+                }
+                else {
+                    for object in objects! {
+                        query = PFQuery(className: "DriverLocation")
+
+                        query.getObjectInBackgroundWithId(object.objectId!, block: {
+                            (object, error) -> Void in
+
+                            if error != nil {
+                                print(error!.localizedDescription)
+                            }
+                            else if let driverLoc = object {
+                                print("Updating Location Record")
+                                driverLoc["location"] = PFGeoPoint(latitude: self.userLat, longitude: self.userLong)
+                                driverLoc.saveInBackground()
+                            }
+                        })
+                    }
+                }
+            }
+        }
+    }
+
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
