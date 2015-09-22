@@ -145,7 +145,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9GV-0d-fnm">
+                            <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9GV-0d-fnm">
                                 <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="s8X-b8-Ij4"/>
@@ -160,7 +160,7 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="LPC-kQ-vXZ">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="LPC-kQ-vXZ">
                                 <rect key="frame" x="20" y="79" width="280" height="379"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8pA-bE-DW8">
@@ -179,7 +179,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="sG3-am-EhI" firstAttribute="top" secondItem="8pA-bE-DW8" secondAttribute="bottom" constant="40" id="9uj-YW-uhp"/>
+                            <constraint firstItem="LPC-kQ-vXZ" firstAttribute="leading" secondItem="kho-LS-oFp" secondAttribute="leadingMargin" id="Dde-6u-abT"/>
+                            <constraint firstItem="LPC-kQ-vXZ" firstAttribute="top" secondItem="9GV-0d-fnm" secondAttribute="bottom" constant="15" id="LlE-DN-cy4"/>
                             <constraint firstItem="8pA-bE-DW8" firstAttribute="centerX" secondItem="kho-LS-oFp" secondAttribute="centerX" id="Spq-gl-zLD"/>
+                            <constraint firstItem="9GV-0d-fnm" firstAttribute="leading" secondItem="kho-LS-oFp" secondAttribute="leadingMargin" constant="-20" id="TlI-n7-ANS"/>
+                            <constraint firstItem="LPC-kQ-vXZ" firstAttribute="trailing" secondItem="kho-LS-oFp" secondAttribute="trailingMargin" id="b0s-Po-tNY"/>
+                            <constraint firstItem="9GV-0d-fnm" firstAttribute="top" secondItem="taE-wq-pqa" secondAttribute="bottom" id="iBt-KC-4Md"/>
+                            <constraint firstItem="8pA-bE-DW8" firstAttribute="top" secondItem="LPC-kQ-vXZ" secondAttribute="bottom" constant="40" id="owm-3g-x0Z"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="9GV-0d-fnm" secondAttribute="trailing" constant="-20" id="z9M-t7-Y0t"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -244,16 +251,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="03s-7M-eyv">
-                                <rect key="frame" x="20" y="64" width="280" height="242"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="242" id="DYc-Sl-SZ2"/>
-                                </constraints>
+                                <rect key="frame" x="20" y="64" width="280" height="391"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Ru-82-gF8">
-                                <rect key="frame" x="115" y="346" width="91" height="30"/>
+                                <rect key="frame" x="115" y="496" width="91" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="91" id="Nez-bV-E0h"/>
-                                    <constraint firstAttribute="height" constant="30" id="fwU-Ol-ql9"/>
+                                    <constraint firstAttribute="width" constant="91" id="2tj-QB-ric"/>
+                                    <constraint firstAttribute="height" constant="30" id="98p-Qs-0lj"/>
                                 </constraints>
                                 <state key="normal" title="Pick up Rider"/>
                                 <connections>
@@ -263,11 +267,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="7Ru-82-gF8" firstAttribute="centerX" secondItem="vcT-PN-T4M" secondAttribute="centerX" id="Dph-s5-l3v"/>
-                            <constraint firstItem="03s-7M-eyv" firstAttribute="trailing" secondItem="vcT-PN-T4M" secondAttribute="trailingMargin" id="c5f-gf-v1M"/>
-                            <constraint firstItem="03s-7M-eyv" firstAttribute="leading" secondItem="vcT-PN-T4M" secondAttribute="leadingMargin" id="lDW-BU-Mpb"/>
-                            <constraint firstItem="7Ru-82-gF8" firstAttribute="top" secondItem="03s-7M-eyv" secondAttribute="bottom" constant="40" id="wae-ot-3fT"/>
-                            <constraint firstItem="03s-7M-eyv" firstAttribute="top" secondItem="ovS-mm-Mil" secondAttribute="bottom" id="xEX-4A-auv"/>
+                            <constraint firstItem="03s-7M-eyv" firstAttribute="trailing" secondItem="vcT-PN-T4M" secondAttribute="trailingMargin" id="Fg8-69-Rdq"/>
+                            <constraint firstItem="7Ru-82-gF8" firstAttribute="centerX" secondItem="vcT-PN-T4M" secondAttribute="centerX" id="GlT-hH-WaA"/>
+                            <constraint firstItem="7Ru-82-gF8" firstAttribute="top" secondItem="03s-7M-eyv" secondAttribute="bottom" constant="41" id="agx-XE-Yoe"/>
+                            <constraint firstItem="03s-7M-eyv" firstAttribute="top" secondItem="ovS-mm-Mil" secondAttribute="bottom" id="iq4-hW-fgR"/>
+                            <constraint firstItem="6Zu-gM-XZt" firstAttribute="top" secondItem="7Ru-82-gF8" secondAttribute="bottom" constant="42" id="j6D-Wm-4b8"/>
+                            <constraint firstItem="03s-7M-eyv" firstAttribute="leading" secondItem="vcT-PN-T4M" secondAttribute="leadingMargin" id="oMd-GO-LPc"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
