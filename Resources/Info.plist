@@ -26,6 +26,10 @@
 	<string>so that your riders can track your location</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>so that your driver can find you</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>Main</string>
 	<key>UIMainStoryboardFile</key>
