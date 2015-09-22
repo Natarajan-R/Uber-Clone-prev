@@ -59,16 +59,14 @@ class RequestViewController: UIViewController, CLLocationManagerDelegate {
                                     print("Geocoding failed: \(error!.localizedDescription)")
                                 }
                                 else {
-                                    if let clp = placemarks![0] as? CLPlacemark {
-                                        let mkp     = MKPlacemark(placemark: clp)
-                                        let mapItem = MKMapItem(placemark: mkp)
+                                    let mkp     = MKPlacemark(placemark: placemarks![0] as CLPlacemark)
+                                    let mapItem = MKMapItem(placemark: mkp)
 
-                                        mapItem.name = self.requestUsername
+                                    mapItem.name = self.requestUsername
 
-                                        let launchOptions = [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving]
+                                    let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
 
-                                        mapItem.openInMapsWithLaunchOptions(launchOptions)
-                                    }
+                                    mapItem.openInMapsWithLaunchOptions(launchOptions)
                                 }
                             })
                         }
