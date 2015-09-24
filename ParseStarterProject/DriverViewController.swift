@@ -21,6 +21,8 @@ class DriverViewController: UITableViewController, CLLocationManagerDelegate {
     var userLat:  CLLocationDegrees = 0.0
     var userLong: CLLocationDegrees = 0.0
 
+    var adding = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -122,15 +124,20 @@ class DriverViewController: UITableViewController, CLLocationManagerDelegate {
             }
             else {
                 if objects?.count == 0 {
-                    // New record
-                    print("New Location Record")
+                    if !self.adding {
+                        // New record
+                        print("New Location Record")
+                        self.adding = true
 
-                    let driverLoc = PFObject(className: "DriverLocation")
-                    driverLoc["username"] = PFUser.currentUser()?.username
-                    driverLoc["location"] = PFGeoPoint(latitude: self.userLat, longitude: self.userLong)
-                    driverLoc.saveInBackground()
+                        let driverLoc = PFObject(className: "DriverLocation")
+                        driverLoc["username"] = PFUser.currentUser()?.username
+                        driverLoc["location"] = PFGeoPoint(latitude: self.userLat, longitude: self.userLong)
+                        driverLoc.saveInBackground()
+                    }
                 }
                 else {
+                    self.adding = false
+
                     for object in objects! {
                         query = PFQuery(className: "DriverLocation")
 
