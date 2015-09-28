@@ -83,8 +83,8 @@ class RequestViewController: UIViewController, CLLocationManagerDelegate {
     func setMapCentre() -> Void {
         let centre = CLLocationCoordinate2DMake(requestLocation.latitude, requestLocation.longitude)
 
-        let dLat:  CLLocationDegrees = 0.007
-        let dLong: CLLocationDegrees = 0.007
+        let dLat:  CLLocationDegrees = 0.01
+        let dLong: CLLocationDegrees = 0.01
         let span:  MKCoordinateSpan  = MKCoordinateSpanMake(dLat, dLong)
 
         let region: MKCoordinateRegion = MKCoordinateRegionMake(centre, span)

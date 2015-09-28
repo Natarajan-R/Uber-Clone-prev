@@ -114,6 +114,11 @@ class DriverViewController: UITableViewController, CLLocationManagerDelegate {
     func updateMyLocationInParse() {
         var query = PFQuery(className: "DriverLocation")
 
+        if PFUser.currentUser()?.objectId == nil {
+            locationManager.stopUpdatingLocation()
+            return
+        }
+        
         query.whereKey("username", equalTo: (PFUser.currentUser()?.username)!)
 
         query.findObjectsInBackgroundWithBlock {
